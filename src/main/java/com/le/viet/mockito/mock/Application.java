@@ -1,4 +1,4 @@
-package com.le.viet.mockito;
+package com.le.viet.mockito.mock;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,6 +1,5 @@
-package com.le.viet.mockito.mock.service;
+package com.le.viet.mockito.bank;
 
-import com.le.viet.mockito.model.PasswordRequest;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -10,12 +9,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Created by onelazyguy on 4/6/17.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-public class CredentialServiceImplTest {
+public class CheckingAccountTest {
     @Mock
-    PasswordRequest passwordRequest;
+    AccountDao accountDaoImpl;
 
     @Test
-    public void testDoCredentialUpdate(){
+    public void getCheckingAccountBalanceTest(){
 
     }
 }

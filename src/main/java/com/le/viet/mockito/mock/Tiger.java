@@ -6,6 +6,6 @@ package com.le.viet.mockito.mock;
 public class Tiger implements Animal{
     @Override
     public String makeNoise() {
-        return "rgghh rgghh";
+        return "a tiger noise";
     }
 }
