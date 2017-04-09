@@ -13,12 +13,16 @@ public class CheckingAccount implements Account{
 
     @Override
     public void doDeposit(float amount) {
-
+        accountDaoImpl.deposit(amount);
     }
 
     @Override
     public void doWithdrawal(float amount) {
-
+        try{
+            accountDaoImpl.withdrawal(99.50f);
+        }catch (AccountException ae){
+            ae.printStackTrace();
+        }
     }
 
     @Override

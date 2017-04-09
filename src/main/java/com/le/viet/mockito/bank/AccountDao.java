@@ -6,5 +6,5 @@ package com.le.viet.mockito.bank;
 public interface AccountDao {
     int queryBalance(int accountNbr);
     void deposit(float amount);
-    void withdrawal(float amount);
+    void withdrawal(float amount) throws AccountException;
 }
