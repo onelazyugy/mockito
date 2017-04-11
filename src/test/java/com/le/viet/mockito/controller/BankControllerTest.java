@@ -37,14 +37,13 @@ public class BankControllerTest {
     public void getBalanceTest() throws Exception{
         int id = 6;
 
-        //given(accountService.getAccountNbr(id)).willReturn("0000999");
+        //similar to when then return, specify the behavior
+        given(accountService.getAccountNbr(id)).willReturn("0000999");
 
         RequestBuilder requestBuilder = get(BankController.GET_ACCOUNT_NUMBER_URL, id);
         ResultActions resultActions = mvc.perform(requestBuilder);
         resultActions.andExpect(status().isOk()).andExpect(content().string("0000999"));
 
-        //mvc.perform(requestBuilder).andExpect(status().isOk()).andExpect(content().string("0000999"));
-        /*mvc.perform(get(BankController.GET_ACCOUNT_NUMBER_URL, id).accept(MediaType.APPLICATION_JSON_UTF8)).andExpect(status()
-                .isOk()).andExpect(content().string("0000999"));*/
+        verify(accountService, atLeastOnce()).getAccountNbr(id);
     }
 }
