@@ -34,16 +34,20 @@ public class BankControllerTest {
     private AccountService accountService;
 
     @Test
-    public void getBalanceTest() throws Exception{
+    public void getAccountNbrTest() throws Exception{
         int id = 6;
-
         //similar to when then return, specify the behavior
         given(accountService.getAccountNbr(id)).willReturn("0000999");
-
-        RequestBuilder requestBuilder = get(BankController.GET_ACCOUNT_NUMBER_URL, id);
+        RequestBuilder requestBuilder = get("/rs/getAccountNbr/{id}", id);
         ResultActions resultActions = mvc.perform(requestBuilder);
         resultActions.andExpect(status().isOk()).andExpect(content().string("0000999"));
-
         verify(accountService, atLeastOnce()).getAccountNbr(id);
+    }
+
+    @Test
+    public void getBalanceTest() throws Exception{
+        given(accountService.getBalance()).willReturn(123456789f);
+        mvc.perform(get("/rs/getBalance")).andExpect(status().isOk());
+        verify(accountService, atLeastOnce()).getBalance();
     }
 }
