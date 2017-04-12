@@ -3,20 +3,19 @@ package com.le.viet.mockito.controller;
 import com.le.viet.mockito.bank.AccountService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.ResultActions;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
+import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.*;
 
 /**
@@ -46,8 +45,11 @@ public class BankControllerTest {
 
     @Test
     public void getBalanceTest() throws Exception{
-        given(accountService.getBalance()).willReturn(123456789f);
-        mvc.perform(get("/rs/getBalance")).andExpect(status().isOk());
+        float given = 12f;
+        given(accountService.getBalance()).willReturn(given);
+        MvcResult result = mvc.perform(get("/rs/getBalance")).andExpect(status().isOk()).andReturn();
+        float expected = Float.parseFloat(result.getResponse().getContentAsString());
+        assertEquals(expected, given, 0);
         verify(accountService, atLeastOnce()).getBalance();
     }
 }

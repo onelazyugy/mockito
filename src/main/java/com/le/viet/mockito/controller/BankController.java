@@ -1,7 +1,6 @@
 package com.le.viet.mockito.controller;
 
 import com.le.viet.mockito.bank.AccountService;
-import com.le.viet.mockito.service.CredentialService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
